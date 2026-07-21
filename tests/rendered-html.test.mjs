@@ -39,7 +39,8 @@ test("renders the Sprout landing page", async () => {
   const appLinks = html.match(
     /<a\b[^>]*href="https:\/\/unifive-sprout\.oa\.r\.appspot\.com\/"/g,
   ) ?? [];
-  assert.equal(appLinks.length, 2);
+  assert.equal(appLinks.length, 1);
+  assert.match(html, /aria-label="Mudar idioma"/);
   assert.doesNotMatch(
     html,
     /href="https:\/\/unifive-sprout\.oa\.r\.appspot\.com\/"[^>]*target="_blank"/,

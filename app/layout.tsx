@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -62,6 +63,30 @@ export default function RootLayout({
     <html lang="pt-PT">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
+        <div
+          id="google_translate_element"
+          aria-hidden="true"
+          style={{ display: "none", position: "absolute", width: 0, height: 0, overflow: "hidden" }}
+        />
+        <Script id="google-translate-init" strategy="afterInteractive">
+          {`
+            window.googleTranslateElementInit = function () {
+              new window.google.translate.TranslateElement(
+                {
+                  pageLanguage: "pt",
+                  includedLanguages: "pt,en,es,fr",
+                  autoDisplay: false
+                },
+                "google_translate_element"
+              );
+            };
+          `}
+        </Script>
+        <Script
+          id="google-translate-script"
+          src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

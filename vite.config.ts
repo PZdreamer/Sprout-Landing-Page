@@ -8,8 +8,8 @@ const SITE_CREATOR_PLACEHOLDER_DATABASE_ID =
 
 const { d1, r2 } = hostingConfig;
 
-// macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
-const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === "seatbelt";
+// Polling keeps hot reload reliable when native macOS file events are unavailable.
+const usePollingOnMacOs = process.platform === "darwin";
 
 const localBindingConfig = {
   main: "./worker/index.ts",
@@ -44,7 +44,7 @@ export default defineConfig(async () => {
   const { cloudflare } = await import("@cloudflare/vite-plugin");
 
   return {
-    server: isCodexSeatbeltSandbox
+    server: usePollingOnMacOs
       ? { watch: { useFsEvents: false, usePolling: true } }
       : undefined,
     plugins: [

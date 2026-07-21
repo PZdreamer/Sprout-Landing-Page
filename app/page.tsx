@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import LanguageSwitcher from "./components/LanguageSwitcher";
 
 const APP_URL = "https://unifive-sprout.oa.r.appspot.com/";
 
@@ -126,7 +127,7 @@ const features = [
 
 function Brand() {
   return (
-    <span className="brand" aria-label="Sprout">
+    <span className="brand notranslate" aria-label="Sprout" translate="no">
       <span className="brand-mark" aria-hidden="true">
         <span className="brand-logo" />
       </span>
@@ -176,9 +177,12 @@ export default function Home() {
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#organizacoes">Para organizações</a>
           </nav>
-          <a className="header-cta" href={APP_URL}>
-            Abrir Sprout <ArrowIcon />
-          </a>
+          <div className="header-actions">
+            <a className="header-cta" href={APP_URL}>
+              Abrir Sprout <ArrowIcon />
+            </a>
+            <LanguageSwitcher />
+          </div>
         </div>
       </header>
 
@@ -338,9 +342,6 @@ export default function Home() {
           <p>
             Sprout © 2026 · by <strong>Unifive</strong>
           </p>
-          <a href={APP_URL}>
-            Abrir aplicação <span aria-hidden="true">→</span>
-          </a>
         </div>
       </footer>
     </>
