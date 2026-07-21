@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sprout.pt"),
+  metadataBase: new URL("https://sprout-community.filipescp966.chatgpt.site"),
   title: {
     default: "Sprout — Faz a tua comunidade florescer",
     template: "%s · Sprout",
