@@ -90,49 +90,23 @@ a:focus-visible {
 }
 
 .brand-mark {
-  position: relative;
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  color: var(--white);
-  background: var(--ink);
-  border-radius: 48% 52% 56% 44% / 49% 47% 53% 51%;
-  transform: rotate(-5deg);
-}
-
-.brand-house {
-  position: relative;
-  z-index: 2;
-  font-size: 21px;
-  line-height: 1;
-  transform: rotate(5deg) translateY(-1px);
-}
-
-.brand-orbit {
-  position: absolute;
-  width: 7px;
-  height: 7px;
+  width: 44px;
+  height: 44px;
+  display: block;
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: var(--white);
+  border: 1px solid rgba(7, 59, 76, 0.1);
   border-radius: 50%;
-  border: 2px solid var(--cream);
+  box-shadow: 0 5px 16px rgba(7, 59, 76, 0.1);
 }
 
-.brand-orbit-one {
-  top: -2px;
-  left: 7px;
-  background: var(--yellow);
-}
-
-.brand-orbit-two {
-  top: 2px;
-  right: 1px;
-  background: var(--teal);
-}
-
-.brand-orbit-three {
-  bottom: 0;
-  right: -2px;
-  background: var(--green);
+.brand-logo,
+.mock-logo {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: var(--white) url("/sprout-logo.png") center / 137% no-repeat;
 }
 
 .brand-word {
@@ -520,10 +494,9 @@ section[id] {
 }
 
 .mock-mark {
-  color: var(--white);
-  background: var(--green-dark);
-  font-size: 11px;
-  font-weight: 900;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid rgba(7, 59, 76, 0.1);
 }
 
 .mock-avatar {
@@ -1132,11 +1105,7 @@ section[id] {
 }
 
 .site-footer .brand-mark {
-  background: var(--green);
-}
-
-.site-footer .brand-orbit {
-  border-color: #052f3d;
+  background: var(--white);
 }
 
 .footer-inner p {
@@ -1266,8 +1235,8 @@ section[id] {
   }
 
   .brand-mark {
-    width: 34px;
-    height: 34px;
+    width: 39px;
+    height: 39px;
   }
 
   .header-cta {

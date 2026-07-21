@@ -83,10 +83,7 @@ function Brand() {
   return (
     <span className="brand" aria-label="Sprout">
       <span className="brand-mark" aria-hidden="true">
-        <span className="brand-house">⌂</span>
-        <span className="brand-orbit brand-orbit-one" />
-        <span className="brand-orbit brand-orbit-two" />
-        <span className="brand-orbit brand-orbit-three" />
+        <span className="brand-logo" />
       </span>
       <span className="brand-word">SPROUT</span>
     </span>
@@ -107,7 +104,9 @@ function AppMockup() {
       <div className="phone-speaker" />
       <div className="phone-screen">
         <div className="mock-header">
-          <span className="mock-mark">S</span>
+          <span className="mock-mark" aria-hidden="true">
+            <span className="mock-logo" />
+          </span>
           <span className="mock-avatar" />
         </div>
         <div className="mock-copy">

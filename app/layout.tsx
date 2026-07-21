@@ -21,8 +21,9 @@ export const metadata: Metadata = {
   description:
     "Descobre eventos locais, conhece pessoas com os mesmos interesses e participa na tua comunidade.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon: "/sprout-logo.png",
+    shortcut: "/sprout-logo.png",
+    apple: "/sprout-logo.png",
   },
   openGraph: {
     title: "Sprout — Faz a tua comunidade florescer",
