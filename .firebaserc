@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "unifive-sprout"
+  },
+  "targets": {
+    "unifive-sprout": {
+      "hosting": {
+        "landing": [
+          "sprout-community"
+        ]
+      }
+    }
+  }
+}
