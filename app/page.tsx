@@ -176,7 +176,7 @@ export default function Home() {
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#organizacoes">Para organizações</a>
           </nav>
-          <a className="header-cta" href={APP_URL} target="_blank" rel="noreferrer">
+          <a className="header-cta" href={APP_URL}>
             Abrir Sprout <ArrowIcon />
           </a>
         </div>
@@ -338,8 +338,8 @@ export default function Home() {
           <p>
             Sprout © 2026 · by <strong>Unifive</strong>
           </p>
-          <a href={APP_URL} target="_blank" rel="noreferrer">
-            Abrir aplicação <span aria-hidden="true">↗</span>
+          <a href={APP_URL}>
+            Abrir aplicação <span aria-hidden="true">→</span>
           </a>
         </div>
       </footer>

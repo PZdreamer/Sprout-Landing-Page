@@ -36,10 +36,14 @@ test("renders the Sprout landing page", async () => {
   assert.match(html, /feature-card feature-teal/);
   assert.match(html, /Sprout © 2026 · by <strong>Unifive<\/strong>/);
   assert.match(html, /https:\/\/unifive-sprout\.oa\.r\.appspot\.com\//);
-  const externalAppLinks = html.match(
+  const appLinks = html.match(
     /<a\b[^>]*href="https:\/\/unifive-sprout\.oa\.r\.appspot\.com\/"/g,
   ) ?? [];
-  assert.equal(externalAppLinks.length, 2);
+  assert.equal(appLinks.length, 2);
+  assert.doesNotMatch(
+    html,
+    /href="https:\/\/unifive-sprout\.oa\.r\.appspot\.com\/"[^>]*target="_blank"/,
+  );
   assert.doesNotMatch(html, /sprout-dot-unifive-sprout/);
   assert.doesNotMatch(html, /Our Team|A nossa equipa/i);
 });
