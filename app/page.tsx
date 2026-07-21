@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
-const APP_URL = "https://sprout-dot-unifive-sprout.oa.r.appspot.com/";
+const APP_URL = "https://unifive-sprout.oa.r.appspot.com/";
 
 export const metadata: Metadata = {
   title: "Sprout — Faz a tua comunidade florescer",
@@ -8,29 +9,73 @@ export const metadata: Metadata = {
     "Descobre eventos perto de ti, conhece pessoas com os mesmos interesses e participa em iniciativas que fazem a diferença.",
 };
 
-const categories = [
+type CategoryKey = "environment" | "social" | "health" | "arts";
+
+function CategoryIcon({ category }: { category: CategoryKey }) {
+  if (category === "environment") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M6.05 8.05c-2.73 2.73-2.73 7.15-.02 9.88 1.47-3.4 4.09-6.24 7.36-7.93-2.77 2.34-4.71 5.61-5.39 9.32 2.6 1.23 5.8.78 7.95-1.37C19.43 14.47 20 4 20 4S9.53 4.57 6.05 8.05z" />
+      </svg>
+    );
+  }
+
+  if (category === "social") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <circle cx="7" cy="7" r="2.2" />
+        <path d="M2.5 15.3c0-2.2 2-3.6 4.5-3.6s4.5 1.4 4.5 3.6v1.3H2.5v-1.3z" />
+        <circle cx="17" cy="7" r="2.2" />
+        <path d="M12.5 15.3c0-2.2 2-3.6 4.5-3.6s4.5 1.4 4.5 3.6v1.3h-9v-1.3z" />
+        <circle cx="12" cy="10.5" r="2.6" />
+        <path d="M7 19c0-2.5 2.2-4 5-4s5 1.5 5 4v1.5H7V19z" />
+      </svg>
+    );
+  }
+
+  if (category === "health") {
+    return (
+      <svg viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd" aria-hidden="true">
+        <path d="M12 2 4 5v6c0 5.25 3.4 10.16 8 11.5 4.6-1.34 8-6.25 8-11.5V5l-8-3zM13 8v3h3v2h-3v3h-2v-3H8v-2h3V8h2z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" fillRule="evenodd" clipRule="evenodd" aria-hidden="true">
+      <path d="M12 3C7.03 3 3 7.03 3 12s4.03 9 9 9c.828 0 1.5-.672 1.5-1.5 0-.396-.152-.751-.398-1.02-.244-.256-.396-.6-.396-.98 0-.828.672-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zM8 11.5A1.5 1.5 0 1 0 5 11.5a1.5 1.5 0 0 0 3 0zM11 7.5A1.5 1.5 0 1 0 8 7.5a1.5 1.5 0 0 0 3 0zM16 7.5A1.5 1.5 0 1 0 13 7.5a1.5 1.5 0 0 0 3 0zM19 11.5A1.5 1.5 0 1 0 16 11.5a1.5 1.5 0 0 0 3 0z" />
+    </svg>
+  );
+}
+
+const categories: Array<{
+  key: CategoryKey;
+  name: string;
+  description: string;
+  className: string;
+}> = [
   {
+    key: "environment",
     name: "Ambiente",
     description: "Cuida do planeta e dos espaços à tua volta.",
-    symbol: "✦",
     className: "category-environment",
   },
   {
+    key: "social",
     name: "Social",
     description: "Aproxima pessoas e fortalece a comunidade.",
-    symbol: "●●",
     className: "category-social",
   },
   {
+    key: "health",
     name: "Saúde",
     description: "Atividades para o corpo e para a mente.",
-    symbol: "♥",
     className: "category-health",
   },
   {
+    key: "arts",
     name: "Artes",
     description: "Descobre, cria e partilha cultura.",
-    symbol: "✺",
     className: "category-arts",
   },
 ];
@@ -100,57 +145,20 @@ function ArrowIcon() {
 
 function AppMockup() {
   return (
-    <div className="phone" aria-label="Pré-visualização da aplicação Sprout">
-      <div className="phone-speaker" />
-      <div className="phone-screen">
-        <div className="mock-header">
-          <span className="mock-mark" aria-hidden="true">
-            <span className="mock-logo" />
-          </span>
-          <span className="mock-avatar" />
-        </div>
-        <div className="mock-copy">
-          <span>Olá!</span>
-          <strong>Descobre perto de ti</strong>
-        </div>
-        <div className="mock-search">⌕&nbsp;&nbsp; Procurar eventos</div>
-        <div className="mock-categories">
-          <span className="mock-category mock-green">✦</span>
-          <span className="mock-category mock-blue">●●</span>
-          <span className="mock-category mock-red">♥</span>
-          <span className="mock-category mock-purple">✺</span>
-        </div>
-        <div className="mock-section-title">
-          <strong>Eventos para ti</strong>
-          <span>Ver todos</span>
-        </div>
-        <div className="mock-event mock-event-main">
-          <div className="mock-event-image mock-event-image-green">
-            <span>14</span>
-            <small>AGO</small>
-          </div>
-          <div>
-            <strong>Limpeza do parque</strong>
-            <span>10:00 · Perto de ti</span>
-          </div>
-        </div>
-        <div className="mock-event">
-          <div className="mock-event-image mock-event-image-orange">
-            <span>18</span>
-            <small>AGO</small>
-          </div>
-          <div>
-            <strong>Oficina comunitária</strong>
-            <span>15:30 · Centro local</span>
-          </div>
-        </div>
-        <div className="mock-nav" aria-hidden="true">
-          <span className="active">●</span>
-          <span>○</span>
-          <span>＋</span>
-          <span>♧</span>
-        </div>
-      </div>
+    <div
+      className="phone"
+      role="img"
+      aria-label="Ecrã Discover da aplicação móvel Sprout, com categorias e eventos recomendados"
+    >
+      <Image
+        className="phone-screen"
+        src="/sprout-mobile-discover.png"
+        alt=""
+        width={367}
+        height={803}
+        priority
+        unoptimized
+      />
     </div>
   );
 }
@@ -192,9 +200,6 @@ export default function Home() {
                 interesses e participa em iniciativas que fazem a diferença.
               </p>
               <div className="hero-actions">
-                <a className="button button-primary" href={APP_URL} target="_blank" rel="noreferrer">
-                  Explorar eventos <ArrowIcon />
-                </a>
                 <a className="button button-secondary" href="#funcionalidades">
                   Como funciona
                 </a>
@@ -228,9 +233,6 @@ export default function Home() {
                   <small>perto de ti</small>
                 </span>
               </div>
-              <div className="hero-badge hero-badge-bottom">
-                <strong>+ comunidade</strong>
-              </div>
             </div>
           </div>
         </section>
@@ -251,7 +253,10 @@ export default function Home() {
               {categories.map((category) => (
                 <article className={`category-card ${category.className}`} key={category.name}>
                   <span className="category-symbol" aria-hidden="true">
-                    {category.symbol}
+                    <CategoryIcon category={category.key} />
+                  </span>
+                  <span className="category-watermark" aria-hidden="true">
+                    <CategoryIcon category={category.key} />
                   </span>
                   <div>
                     <h3>{category.name}</h3>
@@ -279,7 +284,6 @@ export default function Home() {
                 <article className={`feature-card feature-${feature.tone}`} key={feature.number}>
                   <div className="feature-topline">
                     <span className="feature-number">{feature.number}</span>
-                    <span className="feature-mark" aria-hidden="true" />
                   </div>
                   <h3>{feature.title}</h3>
                   <p>{feature.description}</p>
@@ -295,7 +299,9 @@ export default function Home() {
               <div className="organization-decoration" aria-hidden="true">
                 <span className="organization-ring organization-ring-one" />
                 <span className="organization-ring organization-ring-two" />
-                <span className="organization-leaf">✦</span>
+                <span className="organization-symbol">
+                  <CategoryIcon category="social" />
+                </span>
               </div>
               <div className="organization-copy">
                 <span className="section-kicker section-kicker-light">Para organizações</span>
@@ -304,23 +310,6 @@ export default function Home() {
                   Publica eventos, gere participantes e aproxima a tua organização
                   das pessoas que querem contribuir.
                 </p>
-                <a className="button button-light" href={APP_URL} target="_blank" rel="noreferrer">
-                  Publicar um evento <ArrowIcon />
-                </a>
-              </div>
-              <div className="organization-benefits">
-                <div>
-                  <span aria-hidden="true">01</span>
-                  <strong>Criação e gestão de eventos</strong>
-                </div>
-                <div>
-                  <span aria-hidden="true">02</span>
-                  <strong>Comunicação com participantes</strong>
-                </div>
-                <div>
-                  <span aria-hidden="true">03</span>
-                  <strong>Mais visibilidade na comunidade</strong>
-                </div>
               </div>
             </div>
           </div>
@@ -328,7 +317,9 @@ export default function Home() {
 
         <section className="final-cta">
           <div className="page-shell final-cta-inner">
-            <span className="final-sprout" aria-hidden="true">✦</span>
+            <span className="final-sprout" aria-hidden="true">
+              <CategoryIcon category="environment" />
+            </span>
             <div>
               <span className="section-kicker">Começa hoje</span>
               <h2>A tua comunidade começa contigo.</h2>
@@ -337,9 +328,6 @@ export default function Home() {
                 para fazer parte da mudança.
               </p>
             </div>
-            <a className="button button-dark" href={APP_URL} target="_blank" rel="noreferrer">
-              Começar agora <ArrowIcon />
-            </a>
           </div>
         </section>
       </main>
@@ -347,7 +335,9 @@ export default function Home() {
       <footer className="site-footer">
         <div className="page-shell footer-inner">
           <Brand />
-          <p>Eventos locais. Pessoas reais. Impacto positivo.</p>
+          <p>
+            Sprout © 2026 · by <strong>Unifive</strong>
+          </p>
           <a href={APP_URL} target="_blank" rel="noreferrer">
             Abrir aplicação <span aria-hidden="true">↗</span>
           </a>
